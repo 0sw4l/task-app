@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="container pull-bottom">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="jumbotron">
+					<a href="{% url 'new_task' %}" class="btn btn-primary btn-lg">
+						Nueva Tarea <i class="fa fa-plus"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<table class="table table-hover table-responsive table-stripped table-bordered">
+					<thead>
+						<tr>
+							<th class="text-center">
+								Created <i class="fa fa-calendar-plus-o"></i>
+							</th>
+							<th class="text-center">
+								Success <i class="fa fa-check-square" aria-hidden="true"></i>
+							</th>
+							<th class="text-center">
+								Text <i class="fa fa-envelope" aria-hidden="true"></i>
+							</th>
+							<th class="text-center">
+								User <i class="fa fa-user"></i>
+							</th>
+							<th class="text-center">
+								Actions <i class="fa fa-heart"></i>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for task in object_list %}
+						<tr>
+							<td class="text-center">
+								{{ task.created }}
+							</td>
+							<td class="text-center">
+								{{ task.success }}
+							</td>
+							<td class="text-center">
+								{{ task.text }}
+							</td>
+							<td class="text-center">
+								{{ task.user }}
+							</td>
+							<td class="text-center">
+								<a href="">
+									<i class="fa fa-pencil"></i>
+								</a>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block main %}
+{% load widget_tweaks %}
+
+<div class="container pull-bottom">
+	<div class="row">
+		<div class="col-md-8">
+			<form method="post">{% csrf_token %}
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						New Task
+					</div>
+					<div class="panel-body">
+						{% for field in form %}
+						<div class="form-group">
+							<label>{{ field.label }}</label>
+							{% render_field field class='form-control' %}
+							{% if field.errors %}
+								<strong class="text-danger">
+									{{ field.errors }}
+								</strong>
+							{% endif %}
+						</div>
+						{% endfor %}
+					</div>
+					<div class="panel-footer">
+						<button class="btn btn-success" type="submit">
+							Guardar
+							<i class="fa fa-save"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
